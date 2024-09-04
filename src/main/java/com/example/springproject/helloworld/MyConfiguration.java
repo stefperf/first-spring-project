@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Primary;
 
 record Person(String name, String surname) {
     public String getFullName() {
-        return this.name + " " + this.surname;
+        return name + " " + surname;
     }
 }
 
@@ -30,7 +30,7 @@ public class MyConfiguration {
     @Bean
     @Primary
     public Person myself() {
-        return new Person(this.name1(), this.surname1());
+        return new Person(name1(), surname1());
     }
 
     @Bean(name = "name2")
@@ -45,13 +45,13 @@ public class MyConfiguration {
     }
 
     @Bean(name = "husband")
-    public Person person(final String name2, @Qualifier("husbandSurname") final String surname) {
+    public Person person(String name2, @Qualifier("husbandSurname") String surname) {
         return new Person(name2, surname);
     }
 
     @Bean
-    @Qualifier("Wolf")
-    public Mover wolfMover(@Qualifier("Wolf") final Movable movable) {
+    @Qualifier("wolfQualifier")
+    public Mover wolfMover(@Qualifier("wolfQualifier") Movable movable) {
         return new Mover(movable);
     }
 }

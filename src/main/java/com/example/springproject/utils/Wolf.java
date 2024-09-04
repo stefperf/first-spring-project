@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
-@Qualifier("Wolf")
+@Qualifier("wolfQualifier")
 public class Wolf implements Movable {
     @Override
     public String getName() {

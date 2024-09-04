@@ -6,8 +6,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Primary
-@Qualifier("Tiger")
-public class Tiger implements Movable {
+@Qualifier("tigerQualifier")
+public class Tiger
+        implements Movable {
     @Override
     public String getName() {
         return "Tiger";
