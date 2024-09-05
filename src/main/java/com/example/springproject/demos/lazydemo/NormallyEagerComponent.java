@@ -1,4 +1,4 @@
-package com.example.springproject.lazydemo;
+package com.example.springproject.demos.lazydemo;
 
 import org.springframework.stereotype.Component;
 
