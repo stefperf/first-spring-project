@@ -8,12 +8,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
-record Person(String name, String surname) {
-    public String getFullName() {
-        return name + " " + surname;
-    }
-}
-
 @Configuration
 @ComponentScan("com.example.springproject.utils")
 public class MyConfiguration {
@@ -30,7 +24,7 @@ public class MyConfiguration {
     @Bean
     @Primary
     public Person myself() {
-        return new Person(name1(), surname1());
+        return new Person(this.name1(), this.surname1());
     }
 
     @Bean(name = "name2")
@@ -45,13 +39,13 @@ public class MyConfiguration {
     }
 
     @Bean(name = "husband")
-    public Person person(String name2, @Qualifier("husbandSurname") String surname) {
+    public Person person(final String name2, @Qualifier("husbandSurname") final String surname) {
         return new Person(name2, surname);
     }
 
     @Bean
     @Qualifier("wolfQualifier")
-    public Mover wolfMover(@Qualifier("wolfQualifier") Movable movable) {
+    public Mover wolfMover(@Qualifier("wolfQualifier") final Movable movable) {
         return new Mover(movable);
     }
 }
